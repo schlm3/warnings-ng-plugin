@@ -171,14 +171,12 @@ of the already supported formats. E.g., several tools export their issues into t
 want to use all features of the Warnings Plugin it would be even better if you would export the information into the
 *native* [XML](../plugin/src/test/resources/io/jenkins/plugins/analysis/warnings/warnings-issues.xml) or 
 [JSON](../plugin/src/test/resources/io/jenkins/plugins/analysis/warnings/issues.json) format (this parser uses the ID `issues`).  
-These formats are already registered in the user interface and you can use them out-of-the-box. You can even provide
-issues in a simple log file that contains single lines of JSON issues, see 
-[example](../plugin/src/test/resources/io/jenkins/plugins/analysis/warnings/json-issues.log).
+These formats are already registered in the user interface and you can use them out-of-the-box. 
 
 Here is an example step that can be used to parse the native JSON (or XML) format:
 
 ```groovy
-recordIssues(tool: issues())
+recordIssues(tools: [issues(pattern: 'your-file.json')])
 ```
 #### Deploying a new tool using a custom plugin
 
